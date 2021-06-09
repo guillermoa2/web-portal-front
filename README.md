@@ -1,7 +1,6 @@
-<!-- Guillermo Acosta Branch -->
-# LoginPage2
+# ProjectPortalFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
 
 ## Development server
 
