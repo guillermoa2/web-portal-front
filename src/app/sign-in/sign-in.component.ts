@@ -21,11 +21,9 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClickLogin() {
-    this.authService.login().subscribe (data => {
-      console.log(data)
-    });
-    
+  async onClickLogin() {
+    const token = await this.authService.login()
+    console.log(token)
   }
 
 }

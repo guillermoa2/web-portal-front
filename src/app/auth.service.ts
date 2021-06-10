@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient ) { }
+  constructor(private readonly http: HttpClient) { }
 
-  login(): Observable <any> {
-    return this.http.post('http://localhost:5000/api/login', {});
+  async login(): Promise<any> {
+    const res = await this.req('post','http://localhost:5000/api/login');
+    return res;
   }
+
+  async req(method: string, url: string, body?: any): Promise<any> {
+    if (body) {
+      return this.http[method](url, body, {}).toPromise()
+    } else {
+      return this.http[method](url, {}).toPromise()
+    }
+  }
+
 }
