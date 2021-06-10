@@ -15,9 +15,9 @@ export class AuthService {
 
   async req(method: string, url: string, body?: any): Promise<any> {
     if (body) {
-      return this.http[method](url, body, {}).toPromise()
+      return this.http[method](url, body, {}).toPromise().catch(err => console.log(err));
     } else {
-      return this.http[method](url, {}).toPromise()
+      return this.http[method](url, {}).toPromise().catch(err => console.log(err));
     }
   }
 
