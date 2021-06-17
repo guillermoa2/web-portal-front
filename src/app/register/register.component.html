@@ -1,0 +1,48 @@
+<div class="container">
+    <form
+        class="register"
+        [formGroup]="registerForm">
+
+        <h2>Register Account</h2>
+        <p>Portal</p>
+
+        <input 
+            type="text" 
+            formControlName="email" 
+            placeholder="Email"
+        >
+
+        <input 
+            type="text" 
+            formControlName="password"
+            placeholder="Password"
+        >
+
+        <input 
+            type="text" 
+            formControlName="password2"
+            placeholder="Retype Password"
+        >
+        
+        <button (click)="onClickRegister()">Register</button>
+
+        <a 
+            class="message"
+            *ngIf="showLengthMessage"
+            href="#">The password must be atleast 8 characters long
+        </a>
+
+        <p 
+            class="message"
+            *ngIf="showMatchMessage"
+            href="#">The passwords don't match
+        </p>
+
+        <button 
+            class="switchBtn"
+            routerLinkActive="active"
+            [routerLink]="['/sign-in']">
+            Sign in
+        </button>
+    </form>
+</div>
