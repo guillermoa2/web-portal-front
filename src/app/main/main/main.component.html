@@ -1,0 +1,42 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer class="col-xs-6" mode="side" opened>
+
+        <img src="assets/images/doge.jpeg" alt="Company logo" class="logo">
+
+        <mat-nav-list>
+            <a mat-list-item href="#" [routerLink]="['/main/boards']" routerLink="active">Boards</a>
+            <a mat-list-item href="#" [routerLink]="['/main/committees']" routerLink="active">Committees</a>
+            <a mat-list-item href="#" [routerLink]="['/main/meetings']" routerLink="active">Meetings</a>
+            <a mat-list-item href="#" [routerLink]="['/main/documents']" routerLink="active">Documents</a>
+            <a mat-list-item href="#" [routerLink]="['/main/members']" routerLink="active">Members</a>
+        </mat-nav-list>
+
+        <!-- <mat-selection-list id="tabs" #tabsList [multiple]="false">
+            <mat-list-option *ngFor="let tab of tabs" [value]="tab" [routerLink]="tab">
+                {{tab}}
+            </mat-list-option>
+        </mat-selection-list> -->
+
+        <!-- <mat-selection-list id="sign-out" #tabSignout [multiple]="false">
+            <mat-list-option>
+                Sign out
+            </mat-list-option>
+        </mat-selection-list> -->
+
+        <mat-nav-list id="sign-out">
+            <a 
+                mat-list-item href="#" 
+                routerLink="active" 
+                [routerLink]="['/sign-in']"
+                (click)="onClickSignOut()" >
+                Sign out
+            </a>
+        </mat-nav-list>
+
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+</mat-drawer-container>

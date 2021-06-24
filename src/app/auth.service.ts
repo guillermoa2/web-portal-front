@@ -8,8 +8,9 @@ export class AuthService {
 
   constructor(private readonly http: HttpClient) { }
 
-  async login(): Promise<any> {
-    const res = await this.req('post','http://localhost:5000/api/login');
+  async login(body): Promise<any> {
+    const res = await this.req('post','http://localhost:5000/login', body);
+    // console.log(res)
     return res;
   }
 
@@ -25,5 +26,7 @@ export class AuthService {
       return this.http[method](url, {}).toPromise().catch(err => console.log(err));
     }
   }
+
+  
 
 }

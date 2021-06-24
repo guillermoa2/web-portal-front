@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../auth.service';
 
@@ -17,7 +17,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
     this.loginForm = this.formBuilder.group(
       {email: [''], password: ['']}
     );
@@ -27,8 +28,15 @@ export class SignInComponent implements OnInit {
   }
 
   async onClickLogin() {
-    const token = await this.authService.login()
-    console.log(token)
+    const input = await this.authService.login(this.loginForm.value)
+    // console.log(token)
+    // console.log(token == true)
+    if (input.token) {
+      this.router.navigate(['/main']);
+      // console.log('hi')
+    } else {
+      alert('invalid')
+    }
   }
 
 }

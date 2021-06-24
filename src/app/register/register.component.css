@@ -3,12 +3,11 @@ html {
 }
 .container {
     align-items: center;
-    background-color: silver;
+    background-color: rgb(255, 94, 0);
+    color: silver;
     display: flex;
     justify-content: center;
     height: 100vh;
-    color: silver;
-
 }
 .register {
     align-items: center;

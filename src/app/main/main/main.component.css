@@ -1,0 +1,30 @@
+.example-container {
+    background-color: whitesmoke;
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    padding-top: 10px;
+    width: 100vw;
+}
+
+mat-drawer {
+    background-color: lightgray;
+    padding-top: 20px;
+    text-align: center;
+}
+
+mat-drawer-content {
+    width: 100%;
+}
+
+.logo {
+    height: 50px;
+    
+}
+
+#sign-out {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
