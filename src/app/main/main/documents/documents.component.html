@@ -8,7 +8,11 @@
             <!-- Button for upload: 
             https://material.angular.io/components/button/overview -->
             
-            <button mat-raised-button>Upload</button>
+            <input
+                style="display: none"
+                type="file" (change)="onFileChanged($event)"
+                #fileInput>
+            <button mat-raised-button id="btn" (click)="fileInput.click()">Upload</button>
 
             
             <!-- basic divider: for list items
