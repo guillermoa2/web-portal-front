@@ -3,7 +3,7 @@ html {
 }
 .container {
     align-items: center;
-    background-color: rgb(255, 94, 0);;
+    background-color: rgb(255, 94, 0);
     display: flex;
     justify-content: center;
     height: 100vh;

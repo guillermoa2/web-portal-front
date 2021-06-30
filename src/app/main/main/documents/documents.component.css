@@ -1,0 +1,27 @@
+.container {
+    background-color: white;
+    color: grey;
+    height: 100vh;
+    padding: 15px;
+}
+
+button {
+    background-color: rgb(255, 94, 0);
+    color: white;
+}
+
+.item {
+    color: grey;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.item-flex {
+    display: flex;
+}
+
+img {
+    height: 30px;
+    margin-right: 10px;
+}

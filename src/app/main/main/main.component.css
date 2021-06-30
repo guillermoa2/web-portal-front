@@ -10,16 +10,19 @@
 mat-drawer {
     background-color: lightgray;
     padding-top: 20px;
+    min-width:max-content;
+    width: 15%;
     text-align: center;
 }
 
 mat-drawer-content {
+    padding-left: 50px;
+    padding-right: 50px;
     width: 100%;
 }
 
 .logo {
     height: 50px;
-    
 }
 
 #sign-out {
@@ -27,4 +30,8 @@ mat-drawer-content {
     left: 0;
     bottom: 0;
 }
-
+ #title {
+     color: grey;
+     margin:  32px 0px 32px 0px;
+     font-size: 40px;
+ }
