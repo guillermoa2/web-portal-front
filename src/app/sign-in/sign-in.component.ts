@@ -32,6 +32,7 @@ export class SignInComponent implements OnInit {
     // console.log(token)
     // console.log(token == true)
     if (input.token) {
+      localStorage.setItem('jwt', input.token)
       this.router.navigate(['/main']);
       // console.log('hi')
     } else {

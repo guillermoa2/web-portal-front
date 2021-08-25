@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -31,6 +32,7 @@ import { MembersComponent } from './main/members/members.component';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     MatSidenavModule,
     MainRoutingModule,
     MatListModule,

@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
       && this.registerForm.value.password != '') {
         // console.log(this.registerForm.value.email)  
         const token = await this.authService.register(this.registerForm.value)
+        localStorage.setItem('jwt', token)
         // console.log(token)
 
     } else {
