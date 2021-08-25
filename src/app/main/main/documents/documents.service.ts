@@ -21,7 +21,7 @@ export class DocumentsService {
 
   async delete(body): Promise<any>  {
     const res = await this.req('post', 'http://localhost:5000/delete', body)
-    // this.http.get()
+    console.log("body", body)
     return res;
   }
 

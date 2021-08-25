@@ -20,13 +20,15 @@
 
             <mat-list >
               <mat-list-item *ngIf="isLoading">waiting for documents...</mat-list-item>
-                <mat-list-item *ngFor="let document of documents">
+                <mat-list-item *ngFor="let document of documents; index as i">
                         <div class="item">
                             <div class="item-flex">
                                 <img [src]="document.image" alt="i">
                                 <p>{{document.name}}</p>
                             </div>
-                            <fa-icon [icon]="faTrash"></fa-icon>
+                            <fa-icon
+                              [icon]="faTrash"
+                              (click)="onDeleteDoc(i)"></fa-icon>
                         </div>
                         <mat-divider></mat-divider>
                 </mat-list-item>

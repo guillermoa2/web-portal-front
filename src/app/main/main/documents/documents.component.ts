@@ -33,11 +33,6 @@ export class DocumentsComponent implements OnInit {
       this.documents = document
       this.isLoading = false;
     })
-
-    // console.log("down",this.documentsService.download())
-    // this.documents.concat(x)
-    // let x = async res => {this.documentsService.download({image: res})}
-    // console.log(x);
   }
 
   // select file and upload with one button
@@ -54,6 +49,12 @@ export class DocumentsComponent implements OnInit {
         // console.log('this is err',err)
       })
     // console.log(event)
+  }
+
+  async onDeleteDoc(index) {
+    // console.log("doc index",this.documents[index].name)
+    await this.documentsService.delete(this.documents[index]);
+    this.ngOnInit();
   }
 
 }
