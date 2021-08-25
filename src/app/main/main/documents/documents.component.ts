@@ -48,12 +48,12 @@ export class DocumentsComponent implements OnInit {
       .then(async res => {
         // console.log('this is res',res);
         const image = await this.documentsService.upload({image: res})
+        this.ngOnInit();
       })
       .catch(err => {
         // console.log('this is err',err)
       })
     // console.log(event)
-
   }
 
 }
