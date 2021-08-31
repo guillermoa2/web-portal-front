@@ -30,7 +30,9 @@ export class DocumentsComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.documentsService.download().then((document) => {
-      this.documents = document
+      // console.log("document", document)
+      this.documents = document.filter(image => image.name.startsWith(`sizes/25_percent`))
+
       this.isLoading = false;
     })
   }
@@ -56,5 +58,9 @@ export class DocumentsComponent implements OnInit {
     await this.documentsService.delete(this.documents[index]);
     this.ngOnInit();
   }
+
+  // async onExpand(index) {
+  //   await this.documentsService.download
+  // }
 
 }

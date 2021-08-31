@@ -23,7 +23,10 @@
                 <mat-list-item *ngFor="let document of documents; index as i">
                         <div class="item">
                             <div class="item-flex">
-                                <img [src]="document.image" alt="i">
+                                <img
+                                  [src]="document.image"
+                                  alt="i"
+                                  >
                                 <p>{{document.name}}</p>
                             </div>
                             <fa-icon
