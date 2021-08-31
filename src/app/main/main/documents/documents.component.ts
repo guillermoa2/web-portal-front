@@ -59,8 +59,15 @@ export class DocumentsComponent implements OnInit {
     this.ngOnInit();
   }
 
-  // async onExpand(index) {
-  //   await this.documentsService.download
-  // }
+  async onExpand(index) {
+    // console.log("index", this.documents[index].name)
+    const selectedDocument = this.documents[index].name
+    const originalSizeDocumentName = selectedDocument.replace('25_', '100_')
+    await this.documentsService.download().then((document) => {
+      let originalDocument = document.filter((image) => image.name == originalSizeDocumentName)
+      // console.log("selected",p[0].image)
+      window.open(originalDocument[0].image)
+    })
+  }
 
 }
