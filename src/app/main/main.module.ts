@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { DocumentsComponent } from './main/documents/documents.component';
+
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +14,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MainComponent } from './main/main.component';
 
-import { DocumentsComponent } from './main/documents/documents.component';
 import { MainRoutingModule } from './main-routing.module';
 import { BoardsComponent } from './main/boards/boards.component';
 import { CommitteesComponent } from './main/committees/committees.component';
@@ -28,7 +29,7 @@ import { MembersComponent } from './main/members/members.component';
     BoardsComponent,
     CommitteesComponent,
     MeetingsComponent,
-    MembersComponent
+    MembersComponent,
   ],
   imports: [
     CommonModule,
