@@ -1,12 +1,12 @@
 .container {
   height: 100%;
   background: #FAFAFA;
+  color: #5C5C5C;
 }
 .header  {
   align-items: center;
   background-color: #D5D5D5;
   display: flex;
-  color: #5C5C5C;
   height: 35%;
   justify-content: center;
 }
@@ -17,4 +17,56 @@
   justify-content: center;
   margin-bottom: 10%;
   width: 70vw;
+}
+
+.link {
+  color: #41AAE2;
+}
+
+mat-card {
+  color: #5C5C5C;
+}
+
+.members-card {
+  max-width: 400px;
+  min-height: fit-content;
+  height: 350px;
+}
+
+#members-items {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+
+#members-card-title {
+  /* margin: 0px; */
+  /* display: block; */
+}
+
+
+.members-header-image1 {
+  background-image: url('src/assets/images/members/Image 1.png');
+  background-size: cover;
+}
+.members-header-image2 {
+  background-image: url('src/assets/images/members/Image 2.png');
+  background-size: cover;
+}
+.members-header-image3 {
+  background-image: url('src/assets/images/members/Image 3.png');
+  background-size: cover;
+}
+.members-header-image4 {
+  background-image: url('src/assets/images/members/Image 4.png');
+  background-size: cover;
+}
+
+.committees-card {
+  max-width: 400px;
+  height: 200px;
+  margin-top: 1em;
 }
