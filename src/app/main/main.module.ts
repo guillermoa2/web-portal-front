@@ -8,6 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -39,7 +44,10 @@ import { MembersComponent } from './main/members/members.component';
     MatListModule,
     RouterModule,
     MatButtonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTableModule,
+    MatMenuModule,
+    MatIconModule
   ],
   exports: [
     MainComponent

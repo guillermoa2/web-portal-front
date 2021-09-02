@@ -1,0 +1,39 @@
+.container {
+  background-color: white;
+  color: grey;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+#btn {
+  background-color: rgb(255, 94, 0);
+  color: white;
+}
+
+#cancel{
+  color: #EA2727;
+}
+
+.item {
+  color: grey;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.item-flex {
+  display: flex;
+}
+
+img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.mat-cell{
+  color: #5C5C5C;
+}
+
+table {
+  width: 100%;
+}

@@ -42,11 +42,9 @@ mat-card {
 }
 
 
-#members-card-title {
+/* #members-card-title {
   /* margin: 0px; */
-  /* display: block; */
-}
-
+  /* display: block; }*/
 
 .members-header-image1 {
   background-image: url('src/assets/images/members/Image 1.png');
