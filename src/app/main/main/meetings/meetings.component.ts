@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MatDialog } from '@angular/material/dialog';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { MeetingsDialogComponent } from './meetings-dialog/meetings-dialog.component';
 
-export interface PeriodicElement {
+export interface Meeting {
   "Meeting name": string;
   "Meeting date": string;
   attendees: string[];
   menu: boolean;
 }
 
-// export interface Attendee {
-//   first: string;
-//   last: string;
-// }
+export interface Attendee {
+  first: string;
+  last: string;
+}
 
-const MEETING_DATA: PeriodicElement[] = [
+const MEETING_DATA: Meeting[] = [
   {
     "Meeting name": 'Customer onboarding',
     "Meeting date": 'August 7, 2021 at 9:00am',
@@ -48,9 +50,14 @@ export class MeetingsComponent implements OnInit {
   dataSource = MEETING_DATA;
   faTrash = faTrash;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+
+  openDialog() {
+    this.dialog.open(MeetingsDialogComponent);
+  }
+
 
 }

@@ -1,0 +1,104 @@
+<form (submit)="onAddMeeting(meetingForm)" #meetingForm="ngForm">
+
+
+  <h1
+    mat-dialog-title>
+    Create a new meeting
+  </h1>
+
+  <mat-form-field
+    class="example-form-field"
+    appearance="fill">
+    <mat-label>Meeting name</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="meetingName"
+      name="meetingName"
+      required
+      >
+    <button
+      *ngIf="meetingName"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="meetingName=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <!-- <mat-error *ngIf="meetingName.invalid">Please enter a post title.</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="fill">
+    <mat-label>Scheduled meeting</mat-label>
+    <!-- <input matInput [matDatepicker]="picker"> -->
+    <input
+      matInput
+      type="datetime-local"
+      placeholder="start date"
+      name="meetingTime"
+      ngModel
+      required
+      #meetingTime="ngModel"
+      >
+    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker> -->
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="fill">
+    <mat-label>Agenda</mat-label>
+    <textarea
+      matInput
+      rows="6"
+      name="agenda"
+      ngModel
+      required
+      #agenda="ngModel"
+      ></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Favorite Fruits</mat-label>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let fruit of fruits"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(fruit)">
+        {{fruit}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="New fruit..."
+        #fruitInput
+        [formControl]="fruitCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+        {{fruit}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+
+
+
+
+  <div
+    mat-dialog-actions>
+    <button
+      mat-button
+      mat-dialog-close>
+    Cancel</button>
+    <button
+      mat-button
+      type="submit">
+    Create</button>
+  </div>
+
+</form>
