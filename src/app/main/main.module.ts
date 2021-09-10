@@ -4,7 +4,7 @@ import { DocumentsComponent } from './main/documents/documents.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -17,6 +17,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -33,8 +35,6 @@ import { CommitteesComponent } from './main/committees/committees.component';
 import { MeetingsComponent } from './main/meetings/meetings.component';
 import { MembersComponent } from './main/members/members.component';
 import { MeetingsDialogComponent } from './main/meetings/meetings-dialog/meetings-dialog.component';
-import { MatNativeDateModule } from '@angular/material/core';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -68,7 +68,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatNativeDateModule,
     MatSelectModule,
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   exports: [
     MainComponent

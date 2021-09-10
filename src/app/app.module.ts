@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { MainModule } from './main/main.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeModule } from './home/home.module';
@@ -29,7 +28,6 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    MainModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
 

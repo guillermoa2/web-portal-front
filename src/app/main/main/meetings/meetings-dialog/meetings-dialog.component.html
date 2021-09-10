@@ -1,5 +1,7 @@
-<form (submit)="onAddMeeting(meetingForm)" #meetingForm="ngForm">
-
+<form
+  [formGroup]="meetingForm"
+  (ngSubmit)="onAddMeeting(meetingForm, formDirective)"
+  #formDirective="ngForm" >
 
   <h1
     mat-dialog-title>
@@ -13,19 +15,18 @@
     <input
       matInput
       type="text"
-      [(ngModel)]="meetingName"
-      name="meetingName"
-      required
+      formControlName="meetingName"
       >
+
     <button
-      *ngIf="meetingName"
+      *ngIf="meetingForm['meetingName']"
       matSuffix
       mat-icon-button
       aria-label="Clear"
       (click)="meetingName=''">
       <mat-icon>close</mat-icon>
     </button>
-    <!-- <mat-error *ngIf="meetingName.invalid">Please enter a post title.</mat-error> -->
+    <mat-error *ngIf="meetingForm.get('meetingName').invalid">Please enter a meeting name, longer than 3 characters.</mat-error>
   </mat-form-field>
 
   <mat-form-field
@@ -36,11 +37,9 @@
       matInput
       type="datetime-local"
       placeholder="start date"
-      name="meetingTime"
-      ngModel
-      required
-      #meetingTime="ngModel"
+      formControlName="meetingTime"
       >
+      <mat-error *ngIf="meetingForm.get('meetingTime').invalid">Please enter a meeting time.</mat-error>
     <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker> -->
   </mat-form-field>
@@ -51,14 +50,13 @@
     <textarea
       matInput
       rows="6"
-      name="agenda"
-      ngModel
-      required
-      #agenda="ngModel"
+      formControlName="agenda"
       ></textarea>
+      <mat-error *ngIf="meetingForm.get('agenda').invalid">Please enter an agenda.</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="example-chip-list" appearance="fill">
+
+  <mat-form-field class="example-chip-list">
     <mat-label>Favorite Fruits</mat-label>
     <mat-chip-list #chipList aria-label="Fruit selection">
       <mat-chip
@@ -84,8 +82,6 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-
-
 
 
 

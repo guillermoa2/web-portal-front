@@ -5,19 +5,14 @@ import {
   ViewChild
 } from '@angular/core';
 
-import {NgForm} from '@angular/forms';
-
+import {FormArray, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-// interface Food {
-//   name: string;
-//   viewName: string;
-// }
+import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
+import {MatChipInputEvent} from '@angular/material/chips';
+
 
 export interface Attendee {
   name: string;
@@ -32,8 +27,9 @@ export interface Attendee {
   styleUrls: ['./meetings-dialog.component.css']
 })
 export class MeetingsDialogComponent implements OnInit {
-  meetingName:string = '';
-  meetingTime:Date; // :string??
+  meetingForm: FormGroup;
+  // meetingName:string = '';
+  // meetingTime:Date; // :string??
   attendees: Attendee[] = [
     {name: 'connor-0', viewName: 'Connor Steele'},
     {name: 'lucas-1', viewName: 'Lucas Philips'},
@@ -43,6 +39,8 @@ export class MeetingsDialogComponent implements OnInit {
   ];
 
 
+
+  visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -52,6 +50,7 @@ export class MeetingsDialogComponent implements OnInit {
   allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
 
 
@@ -63,22 +62,38 @@ export class MeetingsDialogComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.meetingForm = new FormGroup({
+      'meetingName': new FormControl(null,{validators: [Validators.required, Validators.minLength(3)]}),
+      'meetingTime': new FormControl(null, {validators: [Validators.required]}),
+      'agenda': new FormControl(null,{validators: [Validators.required]}),
+      // 'fruitList': new FormArray([])
+    });
   }
 
-  onAddMeeting(form: NgForm) {
-    console.log(form);
+
+  onAddMeeting(meetingForm: any, formDirective: FormGroupDirective) {
+    if (this.meetingForm.invalid) {
+      return;
+    } else {
+      console.log(this.meetingForm.value);
+    }
+    formDirective.resetForm();
+    this.meetingForm.reset();
   }
 
   add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+    const input = event.input;
+    const value = event.value;
 
     // Add our fruit
-    if (value) {
-      this.fruits.push(value);
+    if ((value || '').trim()) {
+      this.fruits.push(value.trim());
     }
 
-    // Clear the input value
-    event.chipInput!.clear();
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
 
     this.fruitCtrl.setValue(null);
   }
@@ -100,6 +115,8 @@ export class MeetingsDialogComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
+    return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
   }
+
+
 }
