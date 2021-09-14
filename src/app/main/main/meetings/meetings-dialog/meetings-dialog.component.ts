@@ -28,46 +28,44 @@ export interface Attendee {
 })
 export class MeetingsDialogComponent implements OnInit {
   meetingForm: FormGroup;
-  // meetingName:string = '';
-  // meetingTime:Date; // :string??
-  attendees: Attendee[] = [
-    {name: 'connor-0', viewName: 'Connor Steele'},
-    {name: 'lucas-1', viewName: 'Lucas Philips'},
-    {name: 'taylor-2', viewName: 'Taylor LaMar'},
-    {name: 'guillermo-3', viewName: 'Guillermo Acosta'},
-    {name: 'dawood-4', viewName: 'Dawood Zakaria'}
-  ];
-
-
 
   visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
-  fruits: string[] = ['Lemon'];
-  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  attendeeCtrl = new FormControl();
+  filteredAttendees: Observable<string[]>;
+  attendees: string[] = []; //'Lemon'
+  allAttendees: string[] = [
+    'Guillermo Acosta',
+    'Lucas Philips', 
+    'Dawood Zakaria', 
+    'Connor Steele', 
+    'Taylor LaMar'
+  ];
 
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('attendeeInput') attendeeInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
 
-
-
   constructor() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+    this.filteredAttendees = this.attendeeCtrl.valueChanges.pipe(
       startWith(null),
-      map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
+      map((attendee: string | null) => attendee ? this._filter(attendee) : this.allAttendees.slice()));
     }
 
   ngOnInit(): void {
     this.meetingForm = new FormGroup({
-      'meetingName': new FormControl(null,{validators: [Validators.required, Validators.minLength(3)]}),
-      'meetingTime': new FormControl(null, {validators: [Validators.required]}),
-      'agenda': new FormControl(null,{validators: [Validators.required]}),
-      // 'fruitList': new FormArray([])
+      meetingName: new FormControl(null,{validators: [Validators.required, Validators.minLength(3)]}),
+      meetingTime: new FormControl(null, {validators: [Validators.required]}),
+      agenda: new FormControl(null,{validators: [Validators.required]}),
+      attendeeList: new FormArray([
+      ])
     });
+  }
+
+  get attendeeList(): FormArray {
+    return this.meetingForm.get('attendeeList') as FormArray;
   }
 
 
@@ -76,7 +74,10 @@ export class MeetingsDialogComponent implements OnInit {
       return;
     } else {
       console.log(this.meetingForm.value);
+      // console.log(this.attendees)
+
     }
+    this.attendees = [];
     formDirective.resetForm();
     this.meetingForm.reset();
   }
@@ -85,9 +86,10 @@ export class MeetingsDialogComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
+    // Add our attendee
     if ((value || '').trim()) {
-      this.fruits.push(value.trim());
+      this.attendees.push(value.trim());
+      this.attendeeList.value.push(value);
     }
 
     // Reset the input value
@@ -95,27 +97,28 @@ export class MeetingsDialogComponent implements OnInit {
       input.value = '';
     }
 
-    this.fruitCtrl.setValue(null);
+    this.attendeeCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
-
-    if (index >= 0) {
-      this.fruits.splice(index, 1);
-    }
+  remove(index: number): void {
+    // console.log(this.attendees);
+    this.attendees.splice(index, 1);
+    this.attendeeList.value.splice(index, 1);
+    // console.log('attendeeList', this.attendeeList);
+    // console.log('attendees', this.attendees);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.attendees.push(event.option.viewValue);
+    this.attendeeList.value.push(event.option.viewValue);
+    this.attendeeInput.nativeElement.value = '';
+    this.attendeeCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allAttendees.filter(attendee => attendee.toLowerCase().indexOf(filterValue) === 0);
   }
 
 

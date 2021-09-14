@@ -57,28 +57,28 @@
 
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Favorite Fruits</mat-label>
-    <mat-chip-list #chipList aria-label="Fruit selection">
+    <mat-label>Attendees</mat-label>
+    <mat-chip-list #chipList aria-label="Attendee selection">
       <mat-chip
-        *ngFor="let fruit of fruits"
+        *ngFor="let attendee of attendees; let i = index"
         [selectable]="selectable"
         [removable]="removable"
-        (removed)="remove(fruit)">
-        {{fruit}}
+        (removed)="remove(i)">
+        {{attendee}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input
-        placeholder="New fruit..."
-        #fruitInput
-        [formControl]="fruitCtrl"
+        placeholder="New attendee..."
+        #attendeeInput
+        [formControl]="attendeeCtrl"
         [matAutocomplete]="auto"
         [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-        {{fruit}}
+      <mat-option *ngFor="let attendee of filteredAttendees | async" [value]="attendee">
+        {{attendee}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
