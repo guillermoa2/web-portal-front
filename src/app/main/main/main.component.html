@@ -1,7 +1,7 @@
 <mat-drawer-container class="example-container">
     <mat-drawer class="col-xs-6" mode="side" opened>
 
-        <img src="assets/images/doge.jpeg" alt="Company logo" class="logo">
+        <img src="assets/images/main.png" alt="Company logo" class="logo">
 
         <mat-nav-list>
             <a mat-list-item href="#" [routerLink]="['/main/boards']" routerLink="active">Boards</a>
@@ -24,9 +24,9 @@
         </mat-selection-list> -->
 
         <mat-nav-list id="sign-out">
-            <a 
-                mat-list-item href="#" 
-                routerLink="active" 
+            <a
+                mat-list-item href="#"
+                routerLink="active"
                 [routerLink]="['/sign-in']"
                 (click)="onClickSignOut()" >
                 Sign out

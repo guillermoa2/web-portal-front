@@ -14,13 +14,6 @@ import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/a
 import {MatChipInputEvent} from '@angular/material/chips';
 
 
-export interface Attendee {
-  name: string;
-  viewName: string;
-}
-
-
-
 @Component({
   selector: 'app-meetings-dialog',
   templateUrl: './meetings-dialog.component.html',
@@ -35,7 +28,7 @@ export class MeetingsDialogComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   attendeeCtrl = new FormControl();
   filteredAttendees: Observable<string[]>;
-  attendees: string[] = []; //'Lemon'
+  attendees: string[] = [];
   allAttendees: string[] = [
     'Guillermo Acosta',
     'Lucas Philips', 
