@@ -31,9 +31,9 @@ export class MeetingsDialogComponent implements OnInit {
   attendees: string[] = [];
   allAttendees: string[] = [
     'Guillermo Acosta',
-    'Lucas Philips', 
-    'Dawood Zakaria', 
-    'Connor Steele', 
+    'Lucas Philips',
+    'Dawood Zakaria',
+    'Connor Steele',
     'Taylor LaMar'
   ];
 
@@ -67,8 +67,6 @@ export class MeetingsDialogComponent implements OnInit {
       return;
     } else {
       console.log(this.meetingForm.value);
-      // console.log(this.attendees)
-
     }
     this.attendees = [];
     formDirective.resetForm();

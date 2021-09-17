@@ -14,36 +14,6 @@
             (click)="openDialog()">
           + New Meeting</button>
 
-
-          <!-- basic divider: for list items
-          https://material.angular.io/components/divider/examples-->
-
-          <mat-list>
-            <!-- <mat-list-item *ngIf="isLoading">waiting for documents...</mat-list-item> -->
-              <mat-list-item>
-                <div class="item">
-                    <div class="item-flex">
-                        <!-- <p>{document.name}</p> -->
-                    </div>
-                    <fa-icon
-                      [icon]="faTrash"
-                      ></fa-icon>
-
-                </div>
-                <mat-divider></mat-divider>
-              </mat-list-item>
-              <!-- <p *ngIf="documents.length === 0">Upload a Document</p> -->
-          </mat-list>
-
-
-          <!-- Dialog to open images
-          https://material.angular.io/components/dialog/examples -->
-
-          <!-- icon from font awesome:
-          https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/getting-started
-
-          OR https://material.angular.io/components/icon/api#MatIcon-->
-
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
@@ -52,13 +22,13 @@
             <!-- Name Column -->
             <ng-container matColumnDef="Meeting name">
               <th mat-header-cell *matHeaderCellDef> Meeting name </th>
-              <td mat-cell *matCellDef="let meeting"> {{meeting['Meeting name']}} </td>
+              <td mat-cell *matCellDef="let meeting"> {{meeting.name}} </td>
             </ng-container>
 
             <!-- "Meeting date" Column -->
             <ng-container matColumnDef="Meeting date">
               <th mat-header-cell *matHeaderCellDef> Meeting date </th>
-              <td mat-cell *matCellDef="let meeting"> {{meeting["Meeting date"]}} </td>
+              <td mat-cell *matCellDef="let meeting"> {{meeting.time}} </td>
             </ng-container>
 
             <!-- Attendees Column -->

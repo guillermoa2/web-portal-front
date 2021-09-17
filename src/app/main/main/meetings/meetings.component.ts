@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MeetingsDialogComponent } from './meetings-dialog/meetings-dialog.component';
 
-export interface Meeting {
-  "Meeting name": string;
-  "Meeting date": string;
-  attendees: string[];
-  menu: boolean;
+import { MeetingService } from '/Users/Guillermo/Documents/bay-valley-tech/laMar-intern/project-portal-front/src/app/meeting.service'
+
+export class Meeting {
+  public meetingName: string;
+  public meetingDate: string;
+  public attendees: string[];
+  // public menu: boolean;
 }
 
 export interface Attendee {
@@ -18,8 +19,8 @@ export interface Attendee {
 
 const MEETING_DATA: Meeting[] = [
   {
-    "Meeting name": 'Customer onboarding',
-    "Meeting date": 'August 7, 2021 at 9:00am',
+    meetingName: 'Customer onboarding',
+    meetingDate: 'August 7, 2021 at 9:00am',
     attendees: [
       'Connor Steele',
       'Lucas Philips',
@@ -27,16 +28,16 @@ const MEETING_DATA: Meeting[] = [
       'Dawood Zakaria',
       'Guillermo Acosta',
     ],
-    menu: true
+    // menu: true
   },
   {
-    "Meeting name": 'Some other thing',
-    "Meeting date": 'August 11, 2021 at 12:30pm',
+    meetingName: 'Some other thing',
+    meetingDate: 'August 11, 2021 at 12:30pm',
     attendees: [
       'Taylor LaMar',
       'Dawood Zakaria',
     ],
-    menu: true
+    // menu: true
   },
 ];
 
@@ -47,14 +48,20 @@ const MEETING_DATA: Meeting[] = [
 })
 export class MeetingsComponent implements OnInit {
   displayedColumns: string[] = ['Meeting name', 'Meeting date', 'attendees', 'menu'];
-  dataSource = MEETING_DATA;
-  faTrash = faTrash;
+  // dataSource = MEETING_DATA;
+  dataSource = [];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private meetingService: MeetingService) { }
 
   ngOnInit(): void {
-  }
+    this.meetingService.getAllMeetings().then((meeting) => {
 
+      console.log('meeting', meeting)
+      this.dataSource = meeting
+
+    });
+  }
+*
   openDialog() {
     this.dialog.open(MeetingsDialogComponent);
   }
