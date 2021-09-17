@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DatePipe } from '@angular/common';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MeetingsDialogComponent } from './meetings-dialog/meetings-dialog.component';
 
@@ -55,10 +57,8 @@ export class MeetingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.meetingService.getAllMeetings().then((meeting) => {
-
       console.log('meeting', meeting)
       this.dataSource = meeting
-
     });
   }
 *
