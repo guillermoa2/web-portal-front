@@ -1,0 +1,100 @@
+<form
+  [formGroup]="meetingForm"
+  (ngSubmit)="onAddMeeting(meetingForm, formDirective)"
+  #formDirective="ngForm" >
+
+  <h1
+    mat-dialog-title>
+    Create a new meeting
+  </h1>
+
+  <mat-form-field
+    class="example-form-field"
+    appearance="fill">
+    <mat-label>Meeting name</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="meetingName"
+      >
+
+    <button
+      *ngIf="meetingForm['meetingName']"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="meetingName=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="meetingForm.get('meetingName').invalid">Please enter a meeting name, longer than 3 characters.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="fill">
+    <mat-label>Scheduled meeting</mat-label>
+    <!-- <input matInput [matDatepicker]="picker"> -->
+    <input
+      matInput
+      type="datetime-local"
+      placeholder="start date"
+      formControlName="meetingTime"
+      >
+      <mat-error *ngIf="meetingForm.get('meetingTime').invalid">Please enter a meeting time.</mat-error>
+    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker> -->
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="fill">
+    <mat-label>Agenda</mat-label>
+    <textarea
+      matInput
+      rows="6"
+      formControlName="agenda"
+      ></textarea>
+      <mat-error *ngIf="meetingForm.get('agenda').invalid">Please enter an agenda.</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="example-chip-list">
+    <mat-label>Attendees</mat-label>
+    <mat-chip-list #chipList aria-label="Attendee selection">
+      <mat-chip
+        *ngFor="let attendee of attendees; let i = index"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(i)">
+        {{attendee}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="New attendee..."
+        #attendeeInput
+        [formControl]="attendeeCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let attendee of filteredAttendees | async" [value]="attendee">
+        {{attendee}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+
+
+  <div
+    mat-dialog-actions>
+    <button
+      mat-button
+      mat-dialog-close>
+    Cancel</button>
+    <button
+      mat-button
+      type="submit">
+    Create</button>
+  </div>
+
+</form>

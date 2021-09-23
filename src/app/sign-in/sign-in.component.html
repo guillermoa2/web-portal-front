@@ -16,11 +16,17 @@
             formControlName="password"
             placeholder="Password">
 
-        <button (click)="onClickLogin()">Sign in</button>
+        <button 
+            (click)="onClickLogin()"
+        >Sign in</button>
 
         <a href="#">I forgot my password</a>
+
+        <button 
+            class="switchBtn"
+            routerLinkActive="active"
+            [routerLink]="['/register']">
+            Register
+        </button>
     </form>
 </div>
-
-
-<!-- just style it -->

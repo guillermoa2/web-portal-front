@@ -1,0 +1,74 @@
+html {
+    margin: 0;
+}
+.container {
+    align-items: center;
+    background-color: rgb(255, 94, 0);
+    color: silver;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+.register {
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    height: auto;
+    width: 300px;
+    border: 1px solid whitesmoke;
+}
+
+h2  {
+    color: black;
+    margin-bottom: 0px;
+}
+
+p   {
+    margin-top: 8px;
+    margin-bottom: 40px;
+}
+
+input {
+    margin: 8px;
+    border: 1px solid lightgray;
+    width: 60%;
+}
+
+::placeholder {
+    color: lightgray;
+}
+
+button {
+    background-color: rgb(255, 94, 0);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    height: 25px;
+    margin-bottom: 8px;
+    width: 61%;
+}
+
+.switchBtn {
+    border: 3px solid;
+    background-color: white;
+    color: rgb(255, 94, 0);
+    margin-bottom: 10px;
+    margin-top: 8px;
+}
+
+.message {
+    align-items: start;
+    color: red;
+    display: flex;
+    font-size: 90%;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    margin-bottom: 8 px;
+    text-decoration: none;
+    text-align: center;
+    width: 61%;
+}

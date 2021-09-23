@@ -3,7 +3,7 @@ html {
 }
 .container {
     align-items: center;
-    background-color: silver;
+    background-color: rgb(255, 94, 0);
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -13,13 +13,14 @@ html {
 .login {
     align-items: center;
     background-color: white;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     justify-content: center;
-    height: 300px;
+    height: auto;
     width: 300px;
-    border: 2px solid whitesmoke;
+    border: 1px solid whitesmoke;
 }
 
 h2  {
@@ -45,9 +46,18 @@ input {
 button {
     background-color: rgb(255, 94, 0);
     border: none;
+    border-radius: 30px;
     color: white;
     height: 25px;
     width: 61%;
+}
+
+.switchBtn {
+    border: 3px solid;
+    background-color: white;
+    color: rgb(255, 94, 0);
+    margin-bottom: 10px;
+
 }
 
 a {
@@ -56,6 +66,9 @@ a {
     display: flex;
     font-size: 70%;
     margin-top: 16px;
+    margin-bottom: 16px;
     text-decoration: none;
+    text-align: left;
+    width: 61%;
 
 }

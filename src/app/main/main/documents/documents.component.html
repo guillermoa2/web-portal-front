@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <h1>Documents</h1>
+            <hr>
+
+            <!-- Button for upload:
+            https://material.angular.io/components/button/overview -->
+
+            <input
+                style="display: none"
+                type="file" (change)="onFileChanged($event)"
+                #fileInput>
+            <button mat-raised-button id="btn" (click)="fileInput.click()">Upload</button>
+
+
+            <!-- basic divider: for list items
+            https://material.angular.io/components/divider/examples-->
+
+            <mat-list>
+              <mat-list-item *ngIf="isLoading">waiting for documents...</mat-list-item>
+                <mat-list-item *ngFor="let document of documents; index as i">
+                  <div class="item">
+                      <div class="item-flex">
+                          <img
+                            [src]="document.image"
+                            alt="i"
+                            (click)="onExpand(i)">
+                          <p>{{document.name}}</p>
+                      </div>
+                      <fa-icon
+                        [icon]="faTrash"
+                        (click)="onDeleteDoc(i)"></fa-icon>
+                  </div>
+                  <mat-divider></mat-divider>
+                </mat-list-item>
+                <p *ngIf="documents.length === 0">Upload a Document</p>
+            </mat-list>
+
+
+            <!-- Dialog to open images
+            https://material.angular.io/components/dialog/examples -->
+
+            <!-- icon from font awesome:
+            https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/getting-started
+
+            OR https://material.angular.io/components/icon/api#MatIcon-->
+
+
+
+
+
+        </div>
+    </div>
+</div>
