@@ -1,0 +1,26 @@
+<div class="container">
+    <form
+        class="login"
+        [formGroup]="loginForm">
+
+        <h2>Sign In</h2>
+        <p>Portal</p>
+
+        <input 
+            type="text" 
+            formControlName="email" 
+            placeholder="Email">
+
+        <input 
+            type="text" 
+            formControlName="password"
+            placeholder="Password">
+
+        <button (click)="onClickLogin()">Sign in</button>
+
+        <a href="#">I forgot my password</a>
+    </form>
+</div>
+
+
+<!-- just style it -->
