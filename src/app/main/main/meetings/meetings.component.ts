@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MeetingsDialogComponent } from './meetings-dialog/meetings-dialog.component';
 
-import { MeetingService } from '/Users/Guillermo/Documents/bay-valley-tech/laMar-intern/project-portal-front/src/app/meeting.service'
+import { MeetingService } from 'src/app/meeting.service';
 
 export class Meeting {
   public meetingName: string;
@@ -59,7 +59,7 @@ export class MeetingsComponent implements OnInit {
       this.dataSource = meeting
     });
   }
-*
+
   openDialog() {
     this.dialog.open(MeetingsDialogComponent);
   }
