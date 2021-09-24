@@ -61,7 +61,7 @@ button {
 }
 
 a {
-    align-items: start;
+    align-items: flex-start;
     color: lightskyblue;
     display: flex;
     font-size: 70%;

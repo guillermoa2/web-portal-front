@@ -61,7 +61,7 @@ button {
 }
 
 .message {
-    align-items: start;
+    align-items: flex-start;
     color: red;
     display: flex;
     font-size: 90%;
