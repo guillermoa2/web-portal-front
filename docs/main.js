@@ -78,7 +78,7 @@ class RegisterComponent {
                 && this.showMatchMessage == false
                 && this.registerForm.value.email != ''
                 && this.registerForm.value.password != '') {
-                // console.log(this.registerForm.value.email)
+                // console.log(this.registerForm.value.email)  
                 const token = yield this.authService.register(this.registerForm.value);
                 localStorage.setItem('jwt', token);
                 // console.log(token)
