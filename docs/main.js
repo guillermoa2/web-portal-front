@@ -78,7 +78,7 @@ class RegisterComponent {
                 && this.showMatchMessage == false
                 && this.registerForm.value.email != ''
                 && this.registerForm.value.password != '') {
-                // console.log(this.registerForm.value.email)  
+                // console.log(this.registerForm.value.email)
                 const token = yield this.authService.register(this.registerForm.value);
                 localStorage.setItem('jwt', token);
                 // console.log(token)
@@ -365,7 +365,7 @@ __webpack_require__.r(__webpack_exports__);
 
 class AppComponent {
     constructor() {
-        this.title = 'project-portal-front';
+        this.title = 'web-portal-front';
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
